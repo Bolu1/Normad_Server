@@ -1,0 +1,31 @@
+const express = require('express')
+const router = express.Router()
+const checkAuth  = require('../middleware/checkAuth')
+const checkPost  = require('../middleware/check_post')
+const signIn = require('../middleware/signedIn')
+const { addJobs, getall, find, signin, signup, getDetailsJob, editProfile, getDetailsUser, findOne, profile, profileJob, apply, getYourApplication, deleteApp, deleteJob, findMyOne, getJobDetails, editJob } = require('../controllers/controllers')
+
+router.post('/addJob', checkAuth, addJobs)
+router.get('/getAll', getall)
+router.post('/find', find)
+router.post('/signup', signup)
+router.post('/signin', signin)
+router.post('/getDetailsJob', getDetailsJob)
+router.post('/getDetailsUser', getDetailsUser)
+router.post('/editProfile', checkPost, editProfile)
+router.post('/findOne', findOne)
+router.post('/profile',checkPost, profile)
+router.post('/profileJob', checkPost, profileJob)
+router.post('/apply', checkPost, apply)
+router.post('/getYourApplication', checkPost, getYourApplication)
+router.post('/deleteApp', checkPost, deleteApp)
+router.post('/deleteJob', checkPost, deleteJob)
+router.post('/findMyOne', checkPost, findMyOne)
+router.post('/getJobDetails', checkPost, getJobDetails)
+router.post('/editJob', checkPost, editJob)
+router.get('/', (req,res)=>{
+    res.send("Home")
+})
+
+
+module.exports = router
