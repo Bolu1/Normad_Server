@@ -58,9 +58,10 @@ exports.getall = async(req,res) =>{
 
     try{
         
-        const response = await Jobs.find()
+        const response = await User.find()
         console.log("here" + response)
-        res.status(200).json(response)
+        // res.status(200).json(response)
+        res.send(response)
     }catch(error){
         res.status(404).json({message: error})
     }
@@ -100,6 +101,7 @@ exports.find = async(req,res) =>{
         const response = await Jobs.find({ description : { "$regex": l, "$options": "i" }})
         console.log(response)
         res.status(200).json(response)
+        // res.render({response})
     }catch(error){
         res.status(404).json({error: error})
     }
